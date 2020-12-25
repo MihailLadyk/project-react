@@ -1,0 +1,34 @@
+.sidebar {
+  position: fixed;
+  height: 100vh;
+  min-width: 250px;
+  padding: 43px 39px 47px 30px;
+
+background: linear-gradient(rgba(95, 0, 216, 1), rgba(46, 191, 145, 1));
+}
+
+.logo::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-top: 35px;
+}
+
+.nav {
+  margin-top: 35px;
+}
+
+.navList {
+  list-style: none;
+}
+
+.navBottomList {
+  composes: navList;
+  position: absolute;
+  bottom: 47px;
+}
+
+.navListItem:not(:last-child) {
+  margin-bottom: 40px;
+}

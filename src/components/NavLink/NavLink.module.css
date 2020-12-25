@@ -1,0 +1,15 @@
+.navLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.icon {
+  margin-right: 21px;
+}
+
+.label {
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+}
