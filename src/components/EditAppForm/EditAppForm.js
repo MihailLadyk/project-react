@@ -79,7 +79,6 @@ export default class EditAppForm extends Component {
             type="file"
             accept="image/*"
             onChange={this.handleImageChange}
-            required
           />
         </div>
         <div className={styles.col2}>

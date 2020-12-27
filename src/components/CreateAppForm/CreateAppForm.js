@@ -2,7 +2,7 @@ import { Component } from "react";
 import placeholder from "../../components/images/FormPlaceHolder.jpg";
 import styles from "./CreateAppForm.module.css";
 import { toast } from "react-toastify";
-import { createApp } from "../../services/appsApi";
+import { createApp, fetchAppsByQuery } from "../../services/appsApi";
 
 export default class CreateAppForm extends Component {
   state = {
@@ -52,9 +52,6 @@ export default class CreateAppForm extends Component {
           loading: false,
         });
       });
-    // .finally(() => this.setState({
-    //   loading: false
-    // }))
   };
 
   render() {
@@ -65,12 +62,11 @@ export default class CreateAppForm extends Component {
     return (
       <form onSubmit={this.handleCreateApp} className={styles.container}>
         <div className={styles.col1}>
-          <img alt="preview" src={imageUrl} className={styles.preview} />
+          <img width = '300' height = '300' alt="preview" src={imageUrl} className={styles.preview} />
           <input className={styles.imageInput}
             type="file"
             accept="image/*"
             onChange={this.handleImageChange}
-            required
           />
         </div>
         <div className={styles.col2}>

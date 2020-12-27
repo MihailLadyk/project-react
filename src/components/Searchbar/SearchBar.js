@@ -1,4 +1,5 @@
 import { Component } from "react";
+import styles from '../Searchbar/SearchBar.module.css'
 
 export default class SearchBar extends Component {
 
@@ -6,15 +7,14 @@ export default class SearchBar extends Component {
         return(
             <form onSubmit = {this.props.onSubmit}>
                 <input
+                className = {styles.search}
                 onChange = {this.props.onChange}
                 type="text"
                 autoComplete="off"
                 autoFocus
                 placeholder="Search App?"/>
 
-                <button type="submit">
-                    <span>Search</span>
-                </button>
+                <button className = {styles.searchBTN} type="submit"></button>
             </form>
         )
     }

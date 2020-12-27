@@ -1,13 +1,13 @@
 import { Component } from 'react';
 import '../../components/Modal/Modal.css';
-import EditAppForm from '../../components/EditAppForm/EditAppForm'
 
 export default class Modal extends Component {
     render() {
+        console.log(this.props)
         return(
             <div className={this.props.active ? 'Overlay active' : 'Overlay'} onClick = {this.props.closeModal}>
                 <div className="Modal" onClick = {(e) => {e.stopPropagation()}}>
-                    <EditAppForm/>
+                    {this.props.children}
                 </div>
             </div>
         )

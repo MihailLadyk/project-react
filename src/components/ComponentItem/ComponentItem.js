@@ -1,4 +1,5 @@
 import { Component } from "react";
+import styles from '../ComponentItem/ComponentItem.module.css'
 
 export default class ComponentItem extends Component {
 
@@ -6,16 +7,19 @@ export default class ComponentItem extends Component {
         this.props.handleDelete(target.closest("li").id)
     }
 
+    // makeEditAppVisible даёт id для взаимодействия editApp мэбэ глупо написал надо проверять
+
+    makeEditAppVisible = ({target}) => {
+        this.props.makeEditAppVisible(target.closest("li").id)
+    }
+
     render() {
         return(
-            <li id = {this.props.id} key = {this.props.id}>
-                <img src = {"https://goiteens-dashboard.herokuapp.com/" + this.props.image} onClick = {this.props.openModal}></img>
-                <br/>
-                <span>{this.props.title}</span>
-                <br/>
-                <span>{this.props.description}</span>
-                <br/>
-                <button type = 'button' onClick = {this.handleDelete}>delete this app</button>
+            <li className = {styles.item} id = {this.props.id}>
+                <img className = {styles.image} width = '175' height = '175'  src = {"https://goiteens-dashboard.herokuapp.com/" + this.props.image} onClick = {this.makeEditAppVisible}></img>
+                <a className = {styles.link} href = {this.props.link}><span>{this.props.title}</span></a>
+                <span className = {styles.title}>{this.props.description}</span>
+                <button className = {styles.pressedButton} type = 'button' onClick = {this.handleDelete}>delete this app</button>
             </li>
         )
     }
