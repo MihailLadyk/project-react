@@ -1,48 +1,35 @@
-import axios from 'axios';
-
-const config = {
-  baseURL: 'https://goiteens-dashboard.herokuapp.com/api',
-};
+import axios from "axios";
 
 export function fetchAppsByQuery(query, page = 1) {
   return axios({
-    ...config,
-    method: 'get',
-    url: '/apps',
+    method: "get",
+    url: "/apps/all",
     params: {
       page,
       query,
+      perPage: 3,
     },
   }).then((res) => res.data);
 }
 
 export function fetchAppDetails(appId) {
   return axios({
-    ...config,
-    method: 'get',
+    method: "get",
     url: `/apps/${appId}`,
   }).then((res) => res.data);
 }
 
 export function createApp(data) {
   return axios({
-    ...config,
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
-    method: 'post',
-    url: '/apps',
+    method: "post",
+    url: "/apps",
     data,
   }).then((res) => res.data);
 }
 
 export function editApp(appId, newData) {
   return axios({
-    ...config,
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
-    method: 'put',
+    method: "put",
     url: `/apps/${appId}`,
     data: newData,
   }).then((res) => res.data);
@@ -50,8 +37,7 @@ export function editApp(appId, newData) {
 
 export function deleteApp(appId) {
   return axios({
-    ...config,
-    method: 'delete',
+    method: "delete",
     url: `/apps/${appId}`,
   }).then((res) => res.data);
 }

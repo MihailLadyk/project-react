@@ -1,40 +1,40 @@
-import styles from './Sidebar.module.css';
+import styles from "./Sidebar.module.css";
+import { connect } from "react-redux";
+import dashboardIcon from "../images/dashboard-icon.svg";
+import settingsIcon from "../images/settings-icon.svg";
+import profileIcon from "../images/profile-icon.svg";
+import aboutUsIcon from "../images/about-us-icon.svg";
+import logoutIcon from "../images/logout-icon.svg";
+import logoIcon from "../images/logo-icon.svg";
+import * as authSelectors from "../../redux/auth/authSelectors";
+import { urls } from "../../routes";
 
-import dashboardIcon from '../images/dashboard-icon.svg';
-import settingsIcon from '../images/settings-icon.svg';
-import profileIcon from '../images/profile-icon.svg';
-import aboutUsIcon from '../images/about-us-icon.svg';
-import logoutIcon from '../images/logout-icon.svg';
-import logoIcon from '../images/logo-icon.svg';
-
-import { urls } from '../../routes';
-
-import NavLink from '../NavLink/NavLink';
+import NavLink from "../NavLink/NavLink";
 
 const links = [
   {
     to: urls.dashboard,
     icon: dashboardIcon,
-    label: 'Dashboard',
+    label: "Dashboard",
   },
   {
     to: urls.settings,
     icon: settingsIcon,
-    label: 'Settings',
+    label: "Settings",
   },
   {
     to: urls.profile,
     icon: profileIcon,
-    label: 'Profile',
+    label: "Profile",
   },
   {
     to: urls.aboutUs,
     icon: aboutUsIcon,
-    label: 'About us',
+    label: "About us",
   },
 ];
 
-function Sidebar() {
+function Sidebar({ isAuthenticated }) {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.logo}>
@@ -51,13 +51,31 @@ function Sidebar() {
         </ul>
 
         <ul className={styles.navBottomList}>
-          <li className={styles.navListItem}>
-            <NavLink to={urls.logout} icon={logoutIcon} label="Logout" />
-          </li>
+          {isAuthenticated && (
+            <li className={styles.navListItem}>
+              <NavLink to={urls.logout} icon={logoutIcon} label="Logout" />
+            </li>
+          )}
+          {!isAuthenticated && (
+            <>
+              <li className={styles.navListItem}>
+                <NavLink to={urls.login} label="Login" />
+              </li>
+              <li className={styles.navListItem}>
+                <NavLink to={urls.register} label="Register" />
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </aside>
   );
 }
 
-export default Sidebar;
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: authSelectors.isAuthenticated(state),
+  };
+};
+
+export default connect(mapStateToProps)(Sidebar);

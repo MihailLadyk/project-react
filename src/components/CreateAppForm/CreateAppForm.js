@@ -6,7 +6,7 @@ import { createApp, fetchAppsByQuery } from "../../services/appsApi";
 
 export default class CreateAppForm extends Component {
   state = {
-    image: null,
+    image: "",
     title: "",
     link: "",
     description: "",
@@ -18,12 +18,6 @@ export default class CreateAppForm extends Component {
     },
   };
 
-  handleImageChange = (e) => {
-    this.setState({
-      image: e.target.files[0],
-    });
-  };
-
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -33,18 +27,19 @@ export default class CreateAppForm extends Component {
   handleCreateApp = (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-
-    formData.append("title", this.state.title);
-    formData.append("description", this.state.description);
-    formData.append("link", this.state.link);
-    formData.append("image", this.state.image);
-
     this.setState({
       loading: true,
     });
 
-    createApp(formData)
+    const { image, title, link, description } = this.state;
+
+    const appData = {
+      image,
+      title,
+      link,
+      description,
+    };
+    createApp(appData)
       .then((res) => this.props.onCreate(res))
       .catch((error) => {
         toast.error(error.message);
@@ -57,16 +52,17 @@ export default class CreateAppForm extends Component {
   render() {
     const { title, errors, link, description, loading, image } = this.state;
 
-    const imageUrl = image ? URL.createObjectURL(image) : placeholder;
+    const imageUrl = image || placeholder;
 
     return (
       <form onSubmit={this.handleCreateApp} className={styles.container}>
         <div className={styles.col1}>
-          <img width = '300' height = '300' alt="preview" src={imageUrl} className={styles.preview} />
-          <input className={styles.imageInput}
-            type="file"
-            accept="image/*"
-            onChange={this.handleImageChange}
+          <img
+            width="300"
+            height="300"
+            alt="preview"
+            src={imageUrl}
+            className={styles.preview}
           />
         </div>
         <div className={styles.col2}>
@@ -96,6 +92,20 @@ export default class CreateAppForm extends Component {
                 onChange={this.handleChange}
                 value={link}
                 placeholder="Link"
+                required
+              />
+            </label>
+          </div>
+          <div className={styles.formItem}>
+            <label className={styles.label}>
+              <span className={styles.labelText}>Фотогрфия</span>
+              <input
+                className={styles.input}
+                type="url"
+                name="image"
+                onChange={this.handleChange}
+                value={image}
+                placeholder="image"
                 required
               />
             </label>
