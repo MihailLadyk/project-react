@@ -37,7 +37,7 @@ const links = [
 
 // function qwe() {
 //   localStorage.removeItem("persist:auth");
-//   window.location.reload();
+//   window.location.reload()
 // }
 
 function Sidebar({ isAuthenticated, logout }) {
