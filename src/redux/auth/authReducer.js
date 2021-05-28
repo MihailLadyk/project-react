@@ -24,15 +24,14 @@ const userReducer = createReducer(defaultUserState, {
 });
 
 const loadingReducer = createReducer(false, {
-  // Fetch user data
   [actions.fetchUserDataRequest]: () => true,
   [actions.fetchUserDataSuccess]: () => false,
   [actions.fetchUserDataError]: () => false,
-  // Login
+
   [actions.loginRequest]: () => true,
   [actions.loginSuccess]: () => false,
   [actions.loginError]: () => false,
-  // Register
+
   [actions.registerRequest]: () => true,
   [actions.registerSuccess]: () => false,
   [actions.registerError]: () => false,
