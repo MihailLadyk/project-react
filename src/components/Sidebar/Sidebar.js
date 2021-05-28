@@ -40,7 +40,7 @@ const links = [
 //   window.location.reload();
 // }
 
-function Sidebar({ isAuthenticated }) {
+function Sidebar({ isAuthenticated, logout }) {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.logo}>
@@ -59,7 +59,7 @@ function Sidebar({ isAuthenticated }) {
         <ul className={styles.navBottomList}>
           {isAuthenticated && (
             <li className={styles.navListItem}>
-              <button onClick={authOperations.logout}>LOGOUT</button>
+              <button onClick={logout()}>LOGOUT</button>
             </li>
           )}
           {!isAuthenticated && (
@@ -84,4 +84,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Sidebar);
+const mapDispatchToProps = {
+  logout: authOperations.logout,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
