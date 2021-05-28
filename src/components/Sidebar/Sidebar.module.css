@@ -26,7 +26,7 @@ background: linear-gradient(rgba(95, 0, 216, 1), rgba(46, 191, 145, 1));
 .navBottomList {
   composes: navList;
   position: absolute;
-  bottom: 47px;
+
 }
 
 .navListItem:not(:last-child) {

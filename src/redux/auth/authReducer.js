@@ -36,7 +36,6 @@ const loadingReducer = createReducer(false, {
   [actions.registerRequest]: () => true,
   [actions.registerSuccess]: () => false,
   [actions.registerError]: () => false,
-  // Logout
 });
 
 export default combineReducers({

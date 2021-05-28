@@ -2,7 +2,7 @@ import { Component } from "react";
 import placeholder from "../../components/images/FormPlaceHolder.jpg";
 import styles from "./CreateAppForm.module.css";
 import { toast } from "react-toastify";
-import { createApp, fetchAppsByQuery } from "../../services/appsApi";
+import { createApp } from "../../services/appsApi";
 
 export default class CreateAppForm extends Component {
   state = {

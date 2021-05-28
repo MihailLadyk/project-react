@@ -7,7 +7,7 @@ export function fetchAppsByQuery(query, page = 1) {
     params: {
       page,
       query,
-      perPage: 3,
+      perPage: 4,
     },
   }).then((res) => res.data);
 }

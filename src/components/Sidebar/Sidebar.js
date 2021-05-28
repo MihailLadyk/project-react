@@ -8,6 +8,7 @@ import logoutIcon from "../images/logout-icon.svg";
 import logoIcon from "../images/logo-icon.svg";
 import * as authSelectors from "../../redux/auth/authSelectors";
 import { urls } from "../../routes";
+import * as authOperations from "../../redux/auth/authOperations";
 
 import NavLink from "../NavLink/NavLink";
 
@@ -34,6 +35,11 @@ const links = [
   },
 ];
 
+// function qwe() {
+//   localStorage.removeItem("persist:auth");
+//   window.location.reload();
+// }
+
 function Sidebar({ isAuthenticated }) {
   return (
     <aside className={styles.sidebar}>
@@ -53,7 +59,7 @@ function Sidebar({ isAuthenticated }) {
         <ul className={styles.navBottomList}>
           {isAuthenticated && (
             <li className={styles.navListItem}>
-              <NavLink to={urls.logout} icon={logoutIcon} label="Logout" />
+              <button onClick={authOperations.logout}>LOGOUT</button>
             </li>
           )}
           {!isAuthenticated && (

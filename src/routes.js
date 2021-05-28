@@ -1,6 +1,7 @@
 import Dashboard from "./views/Dashboard/Dashboard";
 import NotFound from "./views/NotFound/NotFound";
 import RegisterView from "./views/RegisterView/RegisterView";
+import LoginView from "./views/LoginView/LoginView";
 export const urls = {
   dashboard: "/",
   profile: "/profile",
@@ -17,6 +18,13 @@ export const routes = [
     path: urls.register,
     exact: true,
     component: RegisterView,
+    private: false,
+    restricted: true,
+  },
+  {
+    path: urls.login,
+    exact: true,
+    component: LoginView,
     private: false,
     restricted: true,
   },
@@ -39,7 +47,7 @@ export const routes = [
     exact: true,
     component: NotFound,
     private: false,
-    restricted: true,
+    restricted: false,
   },
   {
     path: urls.notFound,

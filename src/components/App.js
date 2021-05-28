@@ -1,8 +1,8 @@
-import { Component, Suspense } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Component } from "react";
+import { Switch } from "react-router-dom";
 import * as authOperations from "../redux/auth/authOperations";
 import Layout from "./Layout/Layout";
-import { routes, urls } from "../routes";
+import { routes } from "../routes";
 import { connect } from "react-redux";
 import PrivateRoute from "../routing/PrivateRoute";
 import PublicRoute from "../routing/PublicRoute";
