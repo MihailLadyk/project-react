@@ -35,11 +35,6 @@ const links = [
   },
 ];
 
-// function qwe() {
-//   localStorage.removeItem("persist:auth");
-//   window.location.reload()
-// }
-
 function Sidebar({ isAuthenticated, logout }) {
   return (
     <aside className={styles.sidebar}>

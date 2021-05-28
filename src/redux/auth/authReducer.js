@@ -24,6 +24,7 @@ const userReducer = createReducer(defaultUserState, {
 });
 
 const loadingReducer = createReducer(false, {
+  // Fetch user data
   [actions.fetchUserDataRequest]: () => true,
   [actions.fetchUserDataSuccess]: () => false,
   [actions.fetchUserDataError]: () => false,
