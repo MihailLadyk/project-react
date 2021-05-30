@@ -6,16 +6,31 @@
   box-sizing: border-box;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Andika+New+Basic:wght@400;700&display=swap");
+
 body {
   font-weight: 700;
-  font-family: "Andika New Basic", sans-serif;
+
   margin: 0;
   padding: 0;
 }
 
 html {
   font-family: "Lato", sans-serif;
+  font-size: 16px;
+}
+
+html.blue {
   --color-main: #5f00d8;
-  /* --title-font-size: 39px; */
+  --color-secondary: #2ebf91; 
+}
+
+html.purple-orange {
+  --color-main: #833AB4;
+  --color-secondary: #FCB045;
+
+}
+
+html.orange-green {
+  --color-main: #FE676C;
+  --color-secondary:#A4FFC9;
 }

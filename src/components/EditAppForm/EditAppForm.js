@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import styles from "../CreateAppForm/CreateAppForm.module.css";
 import { fetchAppDetails, editApp } from "../../services/appsApi";
-import placeholder from "../images/FormPlaceHolder.jpg";
+import placeholder from "../../images/FormPlaceHolder.jpg";
 
 export default class EditAppForm extends Component {
   static propTypes = {

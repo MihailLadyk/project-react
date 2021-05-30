@@ -1,5 +1,5 @@
 import { Component } from "react";
-import placeholder from "../../components/images/FormPlaceHolder.jpg";
+import placeholder from "../../images/FormPlaceHolder.jpg";
 import styles from "./CreateAppForm.module.css";
 import { toast } from "react-toastify";
 import { createApp } from "../../services/appsApi";

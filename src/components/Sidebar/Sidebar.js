@@ -1,14 +1,15 @@
 import styles from "./Sidebar.module.css";
 import { connect } from "react-redux";
-import dashboardIcon from "../images/dashboard-icon.svg";
-import settingsIcon from "../images/settings-icon.svg";
-import profileIcon from "../images/profile-icon.svg";
-import aboutUsIcon from "../images/about-us-icon.svg";
-import logoutIcon from "../images/logout-icon.svg";
-import logoIcon from "../images/logo-icon.svg";
+import dashboardIcon from "../../images/dashboard-icon.svg";
+import settingsIcon from "../../images/settings-icon.svg";
+import profileIcon from "../../images/profile-icon.svg";
+import aboutUsIcon from "../../images/about-us-icon.svg";
+import logoutIcon from "../../images/logout-icon.svg";
+import logoIcon from "../../images/logo-icon.svg";
 import * as authSelectors from "../../redux/auth/authSelectors";
 import { urls } from "../../routes";
 import * as authOperations from "../../redux/auth/authOperations";
+import HamburgerIcon from "../../images/Hamburger.svg";
 
 import NavLink from "../NavLink/NavLink";
 
@@ -41,6 +42,9 @@ function Sidebar({ isAuthenticated, logout }) {
       <div className={styles.logo}>
         <img src={logoIcon} alt="Dashboard logo" />
       </div>
+      <button type="button" className={styles.navBTN}>
+        <img src={HamburgerIcon} />
+      </button>
 
       <nav className={styles.nav}>
         <ul className={styles.navList}>

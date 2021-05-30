@@ -4,11 +4,11 @@
   min-width: 250px;
   padding: 43px 39px 47px 30px;
 
-background: linear-gradient(rgba(95, 0, 216, 1), rgba(46, 191, 145, 1));
+  background: linear-gradient(var(--color-main), var(--color-secondary));
 }
 
 .logo::after {
-  content: '';
+  content: "";
   display: block;
   height: 1px;
   background-color: rgba(255, 255, 255, 0.2);
@@ -26,9 +26,53 @@ background: linear-gradient(rgba(95, 0, 216, 1), rgba(46, 191, 145, 1));
 .navBottomList {
   composes: navList;
   position: absolute;
-
 }
 
 .navListItem:not(:last-child) {
   margin-bottom: 40px;
+}
+
+.navBTN {
+  display: none;
+}
+
+@media (max-width: 1050px) {
+  .sidebar {
+    background: none;
+    height: 100%;
+    min-width: 100vw;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 35px;
+    position: relative;
+  }
+  .navList:not(:last-child) {
+    margin-bottom: 15px;
+  }
+  .navBottomList {
+    position: relative;
+  }
+  .navListItem:not(:last-child) {
+    margin-bottom: 15px;
+  }
+  .nav {
+    display: none;
+  }
+  .navOpen {
+    display: block;
+    background-color: var(--color-main);
+    color: white;
+    position: absolute;
+    top: 100%;
+    right: 30px;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  .navBTN {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
 }

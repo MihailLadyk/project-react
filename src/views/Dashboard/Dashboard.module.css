@@ -1,6 +1,6 @@
 .dashBoard {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin: 10px 0 10px 0;
 }
 body {
@@ -12,15 +12,11 @@ body {
   display: inline-block;
   padding: 10px 10px;
   border-radius: 30px;
-  background-image: linear-gradient(
-    45deg,
-    #d76ab3 0%,
-    #de3389 50%,
-    #78004a 100%
-  );
+  background-color: var(--color-main);
   background-position: 100% 0;
   background-size: 200% 200%;
-  font-family: "Montserrat", sans-serif;
+  font-family: inherit;
+  border: none;
   text-transform: uppercase;
   font-size: 12px;
   width: 200px;

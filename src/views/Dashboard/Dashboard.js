@@ -127,6 +127,7 @@ class Dashboard extends Component {
       <div>
         <h1>Dashboard</h1>
         <div className={styles.dashBoard}>
+        <SearchBar onChange={this.onChange} onSubmit={this.onSubmit} />
           <button
             className={styles.CreateAppButton}
             onClick={() =>
@@ -136,7 +137,7 @@ class Dashboard extends Component {
             create app
           </button>
         </div>
-        <SearchBar onChange={this.onChange} onSubmit={this.onSubmit} />
+        
         {createAppVisible && (
           <Modal
             children={<CreateAppForm onCreate={this.onCreate} />}
