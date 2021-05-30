@@ -53,7 +53,6 @@ class Dashboard extends Component {
   };
 
   // чендж
-
   onChange = ({ target }) => {
     this.setState({
       filteredQuery: target.value,
@@ -155,8 +154,9 @@ class Dashboard extends Component {
         )}
         <ComponentList
           arrApp={arrApp}
-          handleDelete={this.handleDelete}
           makeEditAppVisible={this.makeEditAppVisible}
+          allowDelete={false}
+          allowChange={false}
         />
         <LoadMore addContent={this.addContent} />
       </div>

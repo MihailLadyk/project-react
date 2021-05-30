@@ -11,19 +11,15 @@ body {
   text-decoration: none;
   display: inline-block;
   padding: 10px 10px;
-  border-radius: 30px;
-  background-image: linear-gradient(
-    45deg,
-    #d76ab3 0%,
-    #de3389 50%,
-    #78004a 100%
-  );
+  border-radius: 5px;
+  background-color: rgba(95, 0, 216, 1);
   background-position: 100% 0;
   background-size: 200% 200%;
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   font-size: 12px;
   width: 200px;
+  border: 0px;
   font-weight: 300;
   color: white;
   box-shadow: 0 16px 32px 0 rgba(0, 40, 120, 0.35);

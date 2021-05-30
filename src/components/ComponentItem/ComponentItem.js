@@ -22,19 +22,22 @@ export default class ComponentItem extends Component {
           width="175"
           height="175"
           src={this.props.image !== null ? this.props.image : noImg}
-          onClick={this.makeEditAppVisible}
+          onClick={this.props.allowChange && this.makeEditAppVisible}
         ></img>
         <a className={styles.link} href={this.props.link}>
           <span>{this.props.title}</span>
         </a>
         <span className={styles.title}>{this.props.description}</span>
-        <button
-          className={styles.pressedButton}
-          type="button"
-          onClick={this.handleDelete}
-        >
-          delete this app
-        </button>
+
+        {this.props.allowDelete && (
+          <button
+            className={styles.pressedButton}
+            type="button"
+            onClick={this.handleDelete}
+          >
+            delete this app
+          </button>
+        )}
       </li>
     );
   }
