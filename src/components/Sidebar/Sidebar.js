@@ -1,6 +1,6 @@
 import styles from "./Sidebar.module.css";
 import { connect } from "react-redux";
-import dashboardIcon from "../images/dashboard-icon.svg";
+import dashboardIcon from "../../images/dashboard-icon.svg";
 import settingsIcon from "../images/settings-icon.svg";
 import profileIcon from "../images/profile-icon.svg";
 import aboutUsIcon from "../images/about-us-icon.svg";
