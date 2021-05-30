@@ -2,6 +2,8 @@ import Dashboard from "./views/Dashboard/Dashboard";
 import NotFound from "./views/NotFound/NotFound";
 import RegisterView from "./views/RegisterView/RegisterView";
 import LoginView from "./views/LoginView/LoginView";
+import ProfileView from "./views/ProfileView/ProfileView";
+
 export const urls = {
   dashboard: "/",
   profile: "/profile",
@@ -38,7 +40,7 @@ export const routes = [
   {
     path: urls.profile,
     exact: true,
-    component: NotFound,
+    component: ProfileView,
     private: true,
     restricted: true,
   },

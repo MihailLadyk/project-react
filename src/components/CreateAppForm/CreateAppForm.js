@@ -50,7 +50,7 @@ export default class CreateAppForm extends Component {
   };
 
   render() {
-    const { title, errors, link, description, loading, image } = this.state;
+    const { title, link, description, loading, image } = this.state;
 
     const imageUrl = image || placeholder;
 

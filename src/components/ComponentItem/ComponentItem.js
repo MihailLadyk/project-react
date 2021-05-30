@@ -17,6 +17,7 @@ export default class ComponentItem extends Component {
     return (
       <li className={styles.item} id={this.props.id}>
         <img
+          alt=""
           className={styles.image}
           width="175"
           height="175"

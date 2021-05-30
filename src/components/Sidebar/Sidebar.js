@@ -54,7 +54,7 @@ function Sidebar({ isAuthenticated, logout }) {
         <ul className={styles.navBottomList}>
           {isAuthenticated && (
             <li className={styles.navListItem}>
-              <button onClick={logout()}>LOGOUT</button>
+              <button onClick={logout}>LOGOUT</button>
             </li>
           )}
           {!isAuthenticated && (

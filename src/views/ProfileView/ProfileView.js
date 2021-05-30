@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { fetchAppsByQuery, deleteApp } from "../../services/appsApi";
+import { fetchMyAppsByQuery, deleteApp } from "../../services/appsApi";
 import styles from "../Dashboard/Dashboard.module.css";
 import Modal from "../../components/Modal/Modal";
 import ComponentList from "../../components/ComponentList/ComponentList";
@@ -9,7 +9,7 @@ import EditAppForm from "../../components/EditAppForm/EditAppForm";
 import CreateAppForm from "../../components/CreateAppForm/CreateAppForm";
 import { connect } from "react-redux";
 
-class Dashboard extends Component {
+class ProfileView extends Component {
   state = {
     arrApp: [],
     query: "",
@@ -30,7 +30,7 @@ class Dashboard extends Component {
   // запрос ---- тут может быть проблема из-за чего при получение новых данных при изменение или добавление оно не перерендривается
 
   requestApi = () => {
-    fetchAppsByQuery(this.state.query, this.state.page).then((res) =>
+    fetchMyAppsByQuery(this.state.query, this.state.page).then((res) =>
       this.setState((prevState) => ({
         arrApp: [...prevState.arrApp, ...res.apps],
       }))
@@ -125,7 +125,7 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <h1>Dashboard</h1>
+        <h1>Profile</h1>
         <div className={styles.dashBoard}>
           <button
             className={styles.CreateAppButton}
@@ -166,4 +166,4 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => ({ arrApp: state.arrApp });
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps)(ProfileView);

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { connect } from "react-redux";
 import * as actions from "./authActions";
 import * as selectors from "./authSelectors";
 const token = {
