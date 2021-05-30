@@ -157,6 +157,8 @@ class ProfileView extends Component {
           arrApp={arrApp}
           handleDelete={this.handleDelete}
           makeEditAppVisible={this.makeEditAppVisible}
+          allowDelete={true}
+          allowChange={true}
         />
         <LoadMore addContent={this.addContent} />
       </div>

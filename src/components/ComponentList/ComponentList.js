@@ -16,6 +16,8 @@ export default class ComponentList extends Component {
             link={el.link}
             handleDelete={this.props.handleDelete}
             makeEditAppVisible={this.props.makeEditAppVisible}
+            allowDelete={this.props.allowDelete}
+            allowChange={this.props.allowChange}
           />
         ))}
       </ul>
