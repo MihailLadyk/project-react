@@ -42,7 +42,7 @@ function Sidebar({ isAuthenticated, logout }) {
         <img src={logoIcon} alt="Dashboard logo" />
       </div>
       <button type="button" className={styles.navBTN}>
-        <img src={HamburgerIcon} />
+        <img alt="" src={HamburgerIcon} />
       </button>
 
       <nav className={styles.nav}>
