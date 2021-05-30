@@ -4,7 +4,6 @@ import dashboardIcon from "../images/dashboard-icon.svg";
 import settingsIcon from "../images/settings-icon.svg";
 import profileIcon from "../images/profile-icon.svg";
 import aboutUsIcon from "../images/about-us-icon.svg";
-import logoutIcon from "../images/logout-icon.svg";
 import logoIcon from "../images/logo-icon.svg";
 import * as authSelectors from "../../redux/auth/authSelectors";
 import { urls } from "../../routes";
