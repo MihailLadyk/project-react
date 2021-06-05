@@ -45,18 +45,19 @@ export default class EditAppForm extends Component {
     e.preventDefault();
 
     const { title, image, link, description } = this.state;
-    const formData = new FormData();
 
-    formData.append("title", title);
-    formData.append("image", image);
-    formData.append("link", link);
-    formData.append("description", description);
+    const obj = {
+      title: title,
+      image: image,
+      link: link,
+      description: description,
+    };
 
     this.setState({
       loading: true,
     });
 
-    editApp(this.props.appId, formData)
+    editApp(this.props.appId, obj)
       .then((res) => this.props.onSuccess(res))
       .catch((error) => {
         toast.error(error.message);
@@ -68,18 +69,12 @@ export default class EditAppForm extends Component {
 
   render() {
     const { title, image, link, description, loading } = this.state;
-    const imageUrl = image ? URL.createObjectURL(image) : placeholder;
+    const imageUrl = image ? image : placeholder;
 
     return (
       <form onSubmit={this.handleFormSubmit} className={styles.container}>
         <div className={styles.col1}>
           <img alt="preview" src={imageUrl} className={styles.preview} />
-          <input
-            className={styles.imageInput}
-            type="file"
-            accept="image/*"
-            onChange={this.handleImageChange}
-          />
         </div>
         <div className={styles.col2}>
           <h2 className={styles.title}>Редактировать</h2>
@@ -108,6 +103,21 @@ export default class EditAppForm extends Component {
                 onChange={this.handleChange}
                 value={link}
                 placeholder="Link"
+                required
+              />
+            </label>
+          </div>
+
+          <div className={styles.formItem}>
+            <label className={styles.label}>
+              <span className={styles.labelText}>Фотогрфия</span>
+              <input
+                className={styles.input}
+                type="url"
+                name="image"
+                onChange={this.handleChange}
+                value={image}
+                placeholder="image"
                 required
               />
             </label>

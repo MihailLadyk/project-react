@@ -45,7 +45,7 @@ class Sidebar extends Component {
   };
 
   render() {
-    const { isAuthenticated, logout } = authSelectors;
+    const { isAuthenticated, logout } = this.props;
     return (
       <aside className={styles.sidebar}>
         <div className={styles.logo}>
