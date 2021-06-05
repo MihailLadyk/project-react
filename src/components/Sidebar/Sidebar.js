@@ -72,15 +72,17 @@ class Sidebar extends Component {
           <ul className={styles.navBottomList}>
             {isAuthenticated && (
               <li className={styles.navListItem}>
-                <button onClick={logout}>LOGOUT</button>
+                <button onClick={logout} className={styles.button}>
+                  LOGOUT
+                </button>
               </li>
             )}
             {!isAuthenticated && (
               <>
-                <li className={styles.navListItem}>
+                <li className={styles.button}>
                   <NavLink to={urls.login} label="Login" />
                 </li>
-                <li className={styles.navListItem}>
+                <li className={styles.button}>
                   <NavLink to={urls.register} label="Register" />
                 </li>
               </>

@@ -11,7 +11,9 @@ function Layout({ children, loading }) {
       <div className={styles.sidebar}>
         <Sidebar />
       </div>
-      <div className={styles.main}>{loading ? <Spinner /> : children}</div>
+      <div className={styles.main}>
+        {loading ? <Spinner type="ThreeDots" /> : children}
+      </div>
     </div>
   );
 }
