@@ -8,6 +8,7 @@ import LoadMore from "../../components/LoadMore/LoadMore";
 import EditAppForm from "../../components/EditAppForm/EditAppForm";
 import CreateAppForm from "../../components/CreateAppForm/CreateAppForm";
 import { connect } from "react-redux";
+import * as authSelectors from "../../redux/auth/authSelectors";
 
 class Dashboard extends Component {
   state = {
@@ -126,17 +127,19 @@ class Dashboard extends Component {
       <div>
         <h1>Dashboard</h1>
         <div className={styles.dashBoard}>
-        <SearchBar onChange={this.onChange} onSubmit={this.onSubmit} />
-          <button
-            className={styles.CreateAppButton}
-            onClick={() =>
-              this.setState({ createAppVisible: true, active: true })
-            }
-          >
-            create app
-          </button>
+          <SearchBar onChange={this.onChange} onSubmit={this.onSubmit} />
+          {authSelectors.isAuthenticated && (
+            <button
+              className={styles.CreateAppButton}
+              onClick={() =>
+                this.setState({ createAppVisible: true, active: true })
+              }
+            >
+              create app
+            </button>
+          )}
         </div>
-        
+
         {createAppVisible && (
           <Modal
             children={<CreateAppForm onCreate={this.onCreate} />}

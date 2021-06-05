@@ -9,7 +9,7 @@ import * as authSelectors from "../../redux/auth/authSelectors";
 import { urls } from "../../routes";
 import * as authOperations from "../../redux/auth/authOperations";
 import HamburgerIcon from "../../images/Hamburger.svg";
-
+import { Component } from "react";
 import NavLink from "../NavLink/NavLink";
 
 const links = [
@@ -35,45 +35,61 @@ const links = [
   },
 ];
 
-function Sidebar({ isAuthenticated, logout }) {
-  return (
-    <aside className={styles.sidebar}>
-      <div className={styles.logo}>
-        <img src={logoIcon} alt="Dashboard logo" />
-      </div>
-      <button type="button" className={styles.navBTN}>
-        <img alt="" src={HamburgerIcon} />
-      </button>
+class Sidebar extends Component {
+  state = {
+    navOpen: false,
+  };
 
-      <nav className={styles.nav}>
-        <ul className={styles.navList}>
-          {links.map((link) => (
-            <li key={link.to} className={styles.navListItem}>
-              <NavLink {...link} />
-            </li>
-          ))}
-        </ul>
+  navOpenFunc = () => {
+    this.setState({ navOpen: this.state.navOpen === true ? false : true });
+  };
 
-        <ul className={styles.navBottomList}>
-          {isAuthenticated && (
-            <li className={styles.navListItem}>
-              <button onClick={logout}>LOGOUT</button>
-            </li>
-          )}
-          {!isAuthenticated && (
-            <>
-              <li className={styles.navListItem}>
-                <NavLink to={urls.login} label="Login" />
+  render() {
+    const { isAuthenticated, logout } = authSelectors;
+    return (
+      <aside className={styles.sidebar}>
+        <div className={styles.logo}>
+          <img src={logoIcon} alt="Dashboard logo" />
+        </div>
+
+        <button
+          type="button"
+          className={styles.navBTN}
+          onClick={this.navOpenFunc}
+        >
+          <img alt="" src={HamburgerIcon} />
+        </button>
+
+        <nav className={this.state.navOpen ? styles.navOpen : styles.nav}>
+          <ul className={styles.navList}>
+            {links.map((link) => (
+              <li key={link.to} className={styles.navListItem}>
+                <NavLink {...link} />
               </li>
+            ))}
+          </ul>
+
+          <ul className={styles.navBottomList}>
+            {isAuthenticated && (
               <li className={styles.navListItem}>
-                <NavLink to={urls.register} label="Register" />
+                <button onClick={logout}>LOGOUT</button>
               </li>
-            </>
-          )}
-        </ul>
-      </nav>
-    </aside>
-  );
+            )}
+            {!isAuthenticated && (
+              <>
+                <li className={styles.navListItem}>
+                  <NavLink to={urls.login} label="Login" />
+                </li>
+                <li className={styles.navListItem}>
+                  <NavLink to={urls.register} label="Register" />
+                </li>
+              </>
+            )}
+          </ul>
+        </nav>
+      </aside>
+    );
+  }
 }
 
 const mapStateToProps = (state) => {
