@@ -1,5 +1,7 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import styles from "./LoginForm.module.css";
+import photo from "../../images/photo_2021-06-06_00-53-49.jpg";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email().required(),
@@ -17,31 +19,41 @@ function LoginForm({ onSubmit }) {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <fieldset>
-        <label>Email</label>
-        <input
-          type="email"
-          name="email"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-        />
-        {formik.errors.email && <pre>{formik.errors.email}</pre>}
-      </fieldset>
+    <div className="div">
+      <img className={styles.image} src={photo} height="50" />
+      <form onSubmit={formik.handleSubmit} className={styles.form}>
+        <fieldset className={styles.fieldset}>
+          <h1>Login</h1>
 
-      <fieldset>
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          value={formik.values.password}
-          onChange={formik.handleChange}
-        />
-        {formik.errors.password && <pre>{formik.errors.password}</pre>}
-      </fieldset>
+          <p className={styles.welcome}>Welcome back!</p>
+          <label className={styles.label}>Email</label>
+          <input
+            className={styles.input}
+            type="email"
+            name="email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+          />
+          {formik.errors.email && <pre>{formik.errors.email}</pre>}
+        </fieldset>
 
-      <button type="submit">Login</button>
-    </form>
+        <fieldset className={styles.fieldset}>
+          <label className={styles.label}>Password</label>
+          <input
+            className={styles.input}
+            type="password"
+            name="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+          />
+          {formik.errors.password && <pre>{formik.errors.password}</pre>}
+        </fieldset>
+
+        <button type="submit" className={styles.button}>
+          Login
+        </button>
+      </form>
+    </div>
   );
 }
 
