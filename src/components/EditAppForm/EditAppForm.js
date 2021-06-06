@@ -23,8 +23,9 @@ export default class EditAppForm extends Component {
     fetchAppDetails(this.props.appId).then((res) =>
       this.setState({
         title: res.title,
-        link: res.title,
         description: res.description,
+        link: res.link,
+        image: res.image,
       })
     );
   }

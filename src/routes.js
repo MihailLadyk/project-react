@@ -4,6 +4,7 @@ import RegisterView from "./views/RegisterView/RegisterView";
 import Settings from "./views/Settings/Settings";
 import LoginView from "./views/LoginView/LoginView";
 import ProfileView from "./views/ProfileView/ProfileView";
+import AboutUs from "./views/AboutUS/AboutUs";
 
 export const urls = {
   dashboard: "/",
@@ -57,6 +58,13 @@ export const routes = [
     exact: true,
     component: NotFound,
     private: true,
+    restricted: false,
+  },
+  {
+    path: urls.aboutUs,
+    exact: true,
+    component: AboutUs,
+    private: false,
     restricted: false,
   },
 ];
