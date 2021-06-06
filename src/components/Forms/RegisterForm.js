@@ -33,7 +33,7 @@ function RegisterForm({ onSubmit }) {
 
   return (
     <div className="div">
-      <img className={styles.image} src={photo} height="50" />
+      <img className={styles.image} src={photo} height="50" alt="" />
       <form onSubmit={formik.handleSubmit} className={styles.form}>
         <h1>Sign up</h1>
         <p className={styles.welcome}>Welcome on board!</p>

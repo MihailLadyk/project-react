@@ -32,7 +32,7 @@ const font = [
 
 const classEdit = (array, tag, target) => {
   if (tag.classList[0] !== target) {
-    array.map((el) => {
+    array.forEach((el) => {
       tag.classList.remove(el.key);
       tag.classList.add(target);
     });

@@ -20,7 +20,7 @@ function LoginForm({ onSubmit }) {
 
   return (
     <div className="div">
-      <img className={styles.image} src={photo} height="50" />
+      <img className={styles.image} src={photo} height="50" alt="" />
       <form onSubmit={formik.handleSubmit} className={styles.form}>
         <fieldset className={styles.fieldset}>
           <h1>Login</h1>
