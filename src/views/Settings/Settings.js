@@ -1,38 +1,102 @@
+import React, { Component } from "react";
 import styles from "./Settings.module.css";
-function Settings() {
-  return (
-    <div className={styles.box}>
-      <h1>Settings</h1>
-      <div></div>
-      <h2>Theme</h2>
-      <select id="color">
-        <option value="color 1">color 1</option>
-        <option value="color 2">color 2</option>
-        <option value="color 3">color 3</option>
-      </select>
-      <h2>Font</h2>
-      <label className={styles.label} for="font">
-        Font
-      </label>
-      {/* <br></br> */}
-      <select id="font">
-        <option value="font 1">font 1</option>
-        <option value="font 2">font 2</option>
-        <option value="font 3">font 3</option>
-      </select>
-      {/* <br></br> */}
-      <label className={styles.label} for="size">
-        Theme
-      </label>
-      {/* <br></br> */}
-      <select id="size">
-        <option value="size 1">size 1</option>
-        <option value="size 2">size 2</option>
-        <option value="size 3">size 3</option>
-      </select>
-      <button className={styles.save}>Save</button>
-    </div>
-  );
-}
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import "../../index.css";
+import { gradients, font, classEdit, body, html } from "../../services/styles";
 
-export default Settings;
+export default class Settings extends Component {
+  state = {
+    size: localStorage.getItem('size'),
+    open: false,
+    value: "lato",
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if(this.state.size !== Number(localStorage.getItem('size'))) {
+      localStorage.setItem('size', this.state.size)
+    }
+  }
+
+  handleOpen = () => {
+    this.setState({
+      open: true,
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      open: false,
+    });
+  };
+
+  render() {
+    console.log(localStorage.getItem('size'))
+    return (
+      <div>
+        <h1>Settings:</h1>
+        <br />
+        <div className={styles.line}></div>
+        <br />
+        <h1>Themes:</h1>
+        <br/>
+        <div className={styles.container}>
+          {gradients.map((el) => {
+            return (
+              <button
+                className={`${styles.btn} ${el.key}`}
+                onClick={({ target }) => {
+                  classEdit(gradients, html, target.value);
+                }}
+                value={el.key}
+              />
+            );
+          })}
+        </div>
+        <br />
+        <h1>Font:</h1>
+        <br />
+        <FormControl className={styles.forma}>
+          <Select
+            open={this.state.open}
+            onClose={this.handleClose}
+            onOpen={this.handleOpen}
+            onChange={(e) => {
+              this.setState({
+                value: e.target.value,
+              });
+              classEdit(font, body, e.target.value);
+            }}
+            value={this.state.value}
+          >
+            {font.map((el) => (
+              <MenuItem value={el.key}>{el.key}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <br />
+        <br />
+        <h1>Size control:</h1>
+        <br />
+        <div className={styles.wrapper}>
+          <input
+          className = {styles.range}
+            onChange={({ target }) => {
+              this.setState({
+                size: Number(target.value),
+              });
+
+              body.style.setProperty("--font-size", `${this.state.size}px`);
+            }}
+            type="range"
+            min="12"
+            max="36"
+            value={this.state.size}
+          />
+          <h1>{this.state.size}</h1>
+        </div>
+      </div>
+    );
+  }
+}

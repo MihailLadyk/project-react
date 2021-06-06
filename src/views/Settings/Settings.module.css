@@ -28,6 +28,50 @@
   transition: 0.5s;
   cursor: pointer;
 }
+
+.forma {
+  width: 300px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: row;
+}
+
+.btn {
+  width: 400px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background: var(--background);
+  margin-bottom: 10px;
+}
+
+.btn:last-child {
+  margin-bottom: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.line {
+  display: block;
+  width: 400px;
+  height: 3px;
+  background: #2ebf91;
+}
+
+.range {
+  margin-right: 50px;
+}
+
+.list {
+  list-style: none;
+}
+
 .save:hover {
   box-shadow: 0 0 0 0 rgba(0, 40, 120, 0);
   background-position: 0 0;
