@@ -1,6 +1,5 @@
 import { Component } from "react";
 import styles from "../ComponentItem/ComponentItem.module.css";
-import noImg from "./notfound.png";
 
 export default class ComponentItem extends Component {
   handleDelete = ({ target }) => {
@@ -21,13 +20,17 @@ export default class ComponentItem extends Component {
           className={styles.image}
           width="175"
           height="175"
-          src={this.props.image !== null ? this.props.image : noImg}
+          src={this.props.image !== null ? this.props.image : null}
           onClick={this.props.allowChange && this.makeEditAppVisible}
         ></img>
         <a className={styles.link} href={this.props.link}>
           <span>{this.props.title}</span>
         </a>
-        <span className={styles.title}>{this.props.description}</span>
+        <span className={styles.title}>
+          {this.props.description.length > 30
+            ? `${this.props.description.slice(0, 30)}...`
+            : this.props.description}
+        </span>
 
         {this.props.allowDelete && (
           <button
