@@ -2,13 +2,15 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import styles from "./LoginForm.module.css";
 import photo from "../../images/photo_2021-06-06_00-53-49.jpg";
+import { connect } from "react-redux";
+import * as authSelectors from "../../redux/auth/authSelectors";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email().required(),
   password: Yup.string().min(6).max(255).required(),
 });
 
-function LoginForm({ onSubmit }) {
+function LoginForm({ onSubmit, error }) {
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -49,7 +51,11 @@ function LoginForm({ onSubmit }) {
           {formik.errors.password && <pre>{formik.errors.password}</pre>}
         </fieldset>
 
-        <button type="submit" className={styles.button}>
+        <button
+          type="submit"
+          className={styles.button}
+          onClick={() => console.log(error)}
+        >
           Login
         </button>
       </form>
@@ -57,4 +63,10 @@ function LoginForm({ onSubmit }) {
   );
 }
 
-export default LoginForm;
+const mapStateToProps = (state) => {
+  return {
+    error: authSelectors.getError(state),
+  };
+};
+
+export default connect(mapStateToProps)(LoginForm);

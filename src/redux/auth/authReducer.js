@@ -31,11 +31,11 @@ const loadingReducer = createReducer(false, {
 
   [actions.loginRequest]: () => true,
   [actions.loginSuccess]: () => false,
-  [actions.loginError]: () => false,
+  [actions.loginError]: () => (state, action) => action.payload,
 
   [actions.registerRequest]: () => true,
   [actions.registerSuccess]: () => false,
-  [actions.registerError]: () => false,
+  [actions.registerError]: () => (state, action) => action.payload,
 });
 
 export default combineReducers({

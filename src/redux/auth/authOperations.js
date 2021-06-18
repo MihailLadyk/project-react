@@ -1,6 +1,9 @@
 import axios from "axios";
 import * as actions from "./authActions";
 import * as selectors from "./authSelectors";
+import * as authSelectors from "../../redux/auth/authSelectors";
+import { connect } from "react-redux";
+
 const token = {
   set(value) {
     axios.defaults.headers.common.Authorization = `Bearer ${value}`;
@@ -19,7 +22,7 @@ export const login = (userData) => (dispatch) => {
       dispatch(actions.loginSuccess(res.data));
     })
     .catch((error) => {
-      dispatch(actions.loginError(error));
+      dispatch(actions.loginError(error.data.message));
     });
 };
 
@@ -58,3 +61,10 @@ export const fetchUserData = () => (dispatch, getState) => {
       dispatch(actions.fetchUserDataError(error));
     });
 };
+const mapStateToProps = (state) => {
+  return {
+    error: authSelectors.getError,
+  };
+};
+
+export default connect(mapStateToProps)(login);
