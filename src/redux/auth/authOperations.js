@@ -1,8 +1,6 @@
 import axios from "axios";
 import * as actions from "./authActions";
 import * as selectors from "./authSelectors";
-import * as authSelectors from "../../redux/auth/authSelectors";
-import { connect } from "react-redux";
 
 const token = {
   set(value) {
@@ -66,5 +64,3 @@ const mapStateToProps = (state) => {
     error: authSelectors.getError,
   };
 };
-
-export default connect(mapStateToProps)(login);
