@@ -1,4 +1,5 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { applyMiddleware, createStore } from "redux";
 import {
   persistReducer,
   persistStore,
@@ -9,6 +10,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import logger from "redux-logger";
 import authReducer from "./auth/authReducer";
 import storage from "redux-persist/lib/storage";
 
@@ -26,6 +28,7 @@ export const store = configureStore({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
+    logger,
   }),
 });
 

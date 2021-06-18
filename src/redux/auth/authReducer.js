@@ -31,10 +31,15 @@ const loadingReducer = createReducer(false, {
 
   [actions.loginRequest]: () => true,
   [actions.loginSuccess]: () => false,
-  [actions.loginError]: () => (state, action) => action.payload,
+  [actions.loginError]: () => false,
 
   [actions.registerRequest]: () => true,
   [actions.registerSuccess]: () => false,
+  [actions.registerError]: () => false,
+});
+
+const errorReducer = createReducer(null, {
+  [actions.loginError]: () => (state, action) => action.payload,
   [actions.registerError]: () => (state, action) => action.payload,
 });
 
@@ -42,4 +47,5 @@ export default combineReducers({
   token: tokenReducer,
   user: userReducer,
   loading: loadingReducer,
+  error: errorReducer,
 });

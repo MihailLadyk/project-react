@@ -20,7 +20,7 @@ export const login = (userData) => (dispatch) => {
       dispatch(actions.loginSuccess(res.data));
     })
     .catch((error) => {
-      dispatch(actions.loginError(error.data.message));
+      dispatch(actions.loginError(error.response.data.error));
     });
 };
 
