@@ -59,8 +59,3 @@ export const fetchUserData = () => (dispatch, getState) => {
       dispatch(actions.fetchUserDataError(error));
     });
 };
-const mapStateToProps = (state) => {
-  return {
-    error: authSelectors.getError,
-  };
-};
