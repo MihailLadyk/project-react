@@ -39,8 +39,8 @@ const loadingReducer = createReducer(false, {
 });
 
 const errorReducer = createReducer(null, {
-  [actions.loginError]: () => (state, action) => action.payload,
-  [actions.registerError]: () => (state, action) => action.payload,
+  [actions.loginError]: (state, action) => action.payload,
+  [actions.registerError]: (state, action) => action.payload,
 });
 
 export default combineReducers({

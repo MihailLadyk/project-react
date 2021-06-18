@@ -19,6 +19,9 @@ function LoginForm({ onSubmit, error }) {
     onSubmit,
     validationSchema,
   });
+  // function loginError() {
+  //   error === null ? null : alert("Error");
+  // }
 
   return (
     <div className="div">
@@ -51,11 +54,7 @@ function LoginForm({ onSubmit, error }) {
           {formik.errors.password && <pre>{formik.errors.password}</pre>}
         </fieldset>
 
-        <button
-          type="submit"
-          className={styles.button}
-          onClick={() => console.log(error)}
-        >
+        <button type="submit" className={styles.button}>
           Login
         </button>
       </form>

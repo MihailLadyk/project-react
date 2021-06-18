@@ -31,7 +31,7 @@ const links = [
   {
     to: urls.aboutUs,
     icon: aboutUsIcon,
-    label: "About us",
+    label: "Our team",
   },
 ];
 
